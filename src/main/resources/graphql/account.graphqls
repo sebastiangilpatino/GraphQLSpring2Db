@@ -1,0 +1,23 @@
+type AccountDTO{
+    accountNumber: Float!
+    entryList : [AccountEntry!]
+    accountHolder: String!
+    balance: Float!
+}
+
+type AccountEntry{
+    amount: Float!
+    description: String!
+}
+
+type Query{
+    getAccount(accountNumber: Float!):AccountDTO
+    getAccounts:[AccountDTO]
+}
+
+type Mutation{
+    deleteAccount(accountNumber: Float!):AccountDTO
+    addAccount(accountNumber: Float!,accountHolderName: String!): AccountDTO
+    deposit(accountNumber:Float!, amount: Float!): Boolean
+    withdraw(accountNumber:Float!, amount: Float!): Boolean
+}
